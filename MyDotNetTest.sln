@@ -5,6 +5,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyCloudReportClient", "MyCl
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReportNet2.0", "ReportNet2.0\ReportNet2.0.csproj", "{BA0F01D1-08BF-45E8-BA03-7D307C01C1C9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReportNet4.0", "ReportNet4.0\ReportNet4.0.csproj", "{985A9A4A-ACEB-4F1F-87DD-B33F35CAC9D7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -19,6 +21,10 @@ Global
 		{BA0F01D1-08BF-45E8-BA03-7D307C01C1C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BA0F01D1-08BF-45E8-BA03-7D307C01C1C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BA0F01D1-08BF-45E8-BA03-7D307C01C1C9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{985A9A4A-ACEB-4F1F-87DD-B33F35CAC9D7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{985A9A4A-ACEB-4F1F-87DD-B33F35CAC9D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{985A9A4A-ACEB-4F1F-87DD-B33F35CAC9D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{985A9A4A-ACEB-4F1F-87DD-B33F35CAC9D7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
