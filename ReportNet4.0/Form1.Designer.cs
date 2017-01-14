@@ -164,7 +164,7 @@
             this.txtQueueServerIp.Name = "txtQueueServerIp";
             this.txtQueueServerIp.Size = new System.Drawing.Size(227, 21);
             this.txtQueueServerIp.TabIndex = 15;
-            this.txtQueueServerIp.Text = "10.5.23.221";
+            this.txtQueueServerIp.Text = "192.168.1.7";
             // 
             // Form1
             // 

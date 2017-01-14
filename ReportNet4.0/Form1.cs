@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Diagnostics;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -177,19 +178,29 @@ namespace ReportNet4._0
                 using (var channel = connection.CreateModel())
                 {
                     channel.QueueDeclare(txtQueueName.Text, false, false, false, null);
+                    channel.BasicQos(0, 1, false); //不要在同一时间给一个工作者发送多于1个的消息，就是说在当前工作者还在处理消息，并且没有响应消息之前，不要给他分发新的消息
 
                     var consumer = new QueueingBasicConsumer(channel);
-                    channel.BasicConsume(txtQueueName.Text, true, consumer);
+                    channel.BasicConsume(txtQueueName.Text, false, consumer); //noAck参数：true自动确认，默认；false要手工确认
 
-                    bw.ReportProgress(0, "开始消费打印队列");
+                    bw.ReportProgress(0, "开始监听打印中心的消息");
 
                     while (true)
                     {
                         var ea = (BasicDeliverEventArgs)consumer.Queue.Dequeue();
 
                         var body = ea.Body;
-                        var message = Encoding.UTF8.GetString(body);
-                        bw.ReportProgress(0, string.Format("接收到打印消息 {0}", message));
+                        //var message = Encoding.UTF8.GetString(body);
+                        //bw.ReportProgress(0, string.Format("接收到打印消息 {0}", message));
+
+                        var path = @"D:\test_recieved_" + DateTime.Now.ToString("yyyyMMddHHmmss") + ".pdf";
+                        using (var fsWrite = new FileStream(path, FileMode.CreateNew))
+                        {
+                            fsWrite.Write(body, 0, body.Length);
+                        };
+                        //bw.ReportProgress(0, string.Format("接收到打印文件： {0}（{1}字节）", path, body.Length));
+
+                        channel.BasicAck(ea.DeliveryTag, false);  //确认消息
 
                     }
                 }
